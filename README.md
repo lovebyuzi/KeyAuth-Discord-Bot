@@ -24,7 +24,7 @@ This bot has everything you need. Auth/Moderation/General
 8. Type / in a channel to see bot's commands
 ```
 
-Enjoy
+Enjoy. Make sure to add a star.
 
 **What is KeyAuth?**
 
