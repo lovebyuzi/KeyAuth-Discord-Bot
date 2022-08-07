@@ -1,6 +1,8 @@
 # KeyAuth-Discord-Bot
 Discord bot for keyauth.win
 
+```
+This bot has everything you need. Auth/Moderation/General
 
 ```
 1. Install Source code.
