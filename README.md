@@ -6,6 +6,8 @@ Discord bot for keyauth.win
       Ifyou need any help DM me on discord and we can sort this out! Zempex#9492
 
 ```
+
+``
 1. Install Source code.
 2. Extract to folder of your choice.
 3. Open the folder in code editor of your choice.
