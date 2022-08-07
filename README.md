@@ -3,7 +3,7 @@ Discord bot for keyauth.win
 
 ```
       Keyauth Discord bot, made by Zempex#9492
-      Ifyou need any help DM me on discord and we can sort this out! Zempex#9492
+      If you need any help DM me on discord and we can sort this out! Zempex#9492
 
 ```
 
@@ -18,6 +18,8 @@ Discord bot for keyauth.win
 
 ```
 ###### Discord Developer Portal
+```
+
 ```
 1. Go to Discord Developer Portal
 2. Create application 
