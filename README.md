@@ -2,7 +2,8 @@
 Discord bot for keyauth.win
 
 ```
-This bot has everything you need. Auth/Moderation/General
+      Keyauth Discord bot, made by Zempex#9492
+       Any help DM me on discord and we can sort this out!
 
 ```
 1. Install Source code.
@@ -19,7 +20,7 @@ This bot has everything you need. Auth/Moderation/General
 3. Click on the "BOT" tab and add bot.
 4. Go to OAuth2 Tab -> URL Generator
 5. Add these Scopes: bot, application.commands
-6. Add thse Bot Permissions: Adminstrator, Then copy Generated URL and authorize it.
+6. Add these Bot Permissions: Adminstrator, Then copy Generated URL and authorize it.
 7. Add bot to server.
 8. Type / in a channel to see bot's commands
 ```
