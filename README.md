@@ -2,8 +2,8 @@
 Discord bot for keyauth.win
 
 ```
-      Keyauth Discord bot, made by Zempex#9492
-      If you need any help DM me on discord and we can sort this out! Zempex#9492
+      Keyauth Discord bot, made by Zempex#9999
+      If you need any help DM me on discord and we can sort this out! Zempex#9999
 
 ```
 
