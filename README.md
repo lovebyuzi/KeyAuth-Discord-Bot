@@ -13,7 +13,7 @@ Discord bot for keyauth.win
 3. Open the folder in code editor of your choice.
 4. Edit code <add token> <logschannelid> <replace seller keys>
 5. Make sure you have roles "[Perms] Control" "[Perms] Generator" "[Perms] Reset"
-6. To start bot run bot.py
+6. To start bot run keyauth.py
 ```
 
 ```
