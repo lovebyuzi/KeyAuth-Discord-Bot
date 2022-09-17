@@ -8,12 +8,15 @@ from discord import Embed, Member
 from discord.utils import get
 from typing import Optional
 
+intents = discord.Intents.all() # or .all() if you ticked all, that is easier
+intents.members = True # If you ticked the SERVER MEMBERS INTENT
+
 
 prefix = "!" # replace with your prefix.
 token = "" # replace with your discord bot token. for more information how you can create a token: https://discordpy.readthedocs.io/en/stable/discord.html
 version = "V1.0"  # no need replace.
 logschannid = "" # replace with your channel ID
-bot = commands.Bot(command_prefix=prefix)
+bot = commands.Bot(command_prefix=prefix, intents=intents)
 bot.remove_command("help")
 keyssss = {}
 @bot.event
