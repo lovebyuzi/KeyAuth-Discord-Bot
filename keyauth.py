@@ -16,6 +16,7 @@ prefix = "!" # replace with your prefix.
 token = "" # replace with your discord bot token. for more information how you can create a token: https://discordpy.readthedocs.io/en/stable/discord.html
 version = "V1.0"  # no need replace.
 logschannid = "" # replace with your channel ID
+sellerkey = "" #replace with your keyauth sellerkey
 bot = commands.Bot(command_prefix=prefix, intents=intents)
 bot.remove_command("help")
 keyssss = {}
@@ -183,7 +184,7 @@ async def claim(ctx,lic):
 	try:
 		password = "".join(random.choice(string.ascii_letters+string.digits) for i in range(10))
 		username = "".join(random.choice(string.ascii_letters+string.digits) for i in range(10))
-		req = requests.get(f"https://keyauth.win/api/seller/?sellerkey=REPLACEME&type=activate&user={username}&key={lic}&pass={password}")
+		req = requests.get(f"https://keyauth.win/api/seller/?sellerkey={sellerkey}&type=activate&user={username}&key={lic}&pass={password}")
 		if req.json()["success"] == True:
 			expire = req.text.split('"expiry":"')[1].split('"')[0]
 			expire = datetime.utcfromtimestamp(int(expire)).strftime('%Y-%m-%d %H:%M:%S')
@@ -210,7 +211,7 @@ async def resethwid(ctx,user,reason):
 	role = discord.utils.get(ctx.guild.roles, name="[Perms] Reset") 
 	if role not in ctx.author.roles:
 		return
-	req = requests.get(f"https://keyauth.win/api/seller/?sellerkey=REPLACEME&type=resetuser&user={user}")
+	req = requests.get(f"https://keyauth.win/api/seller/?sellerkey={sellerkey}&type=resetuser&user={user}")
 	
 	if req.json()["success"] == True:
 		await ctx.send(embed=discord.Embed(title="**Reset Completed!**",description=f"Reset For User `{user}` was reset for reason `{reason}`",colour=0x42F56C))
@@ -222,7 +223,7 @@ async def resethwid(ctx,user,reason):
 @bot.command()
 @commands.has_permissions(administrator = True)
 async def deleteuser(ctx,user):
-	req = requests.get(f"https://keyauth.win/api/seller/?sellerkey=REPLACEME&type=deluser&user={user}")
+	req = requests.get(f"https://keyauth.win/api/seller/?sellerkey={sellerkey}&type=deluser&user={user}")
 	if req.json()["success"] == True:
 		await ctx.send(embed=discord.Embed(title="Username Deleted!",description='Succesfully Deleted User',colour=0x42F56C))
 	else:
@@ -231,7 +232,7 @@ async def deleteuser(ctx,user):
 @bot.command()
 @commands.has_permissions(administrator = True)
 async def banaccount(ctx,user,*,reason=None):
-	req = requests.get(f"https://keyauth.win/api/seller/?sellerkey=REPLACEME&type=banuser&user={user}&reason={reason}")
+	req = requests.get(f"https://keyauth.win/api/seller/?sellerkey={sellerkey}&type=banuser&user={user}&reason={reason}")
 	if req.json()["success"] == True:
 		embed=discord.Embed(title="**Moderation: User was Banned**",description=f"{user}, Has been banned from Zempex Server.\nReason is `{reason}`. This ban was requested from\n{ctx.author.mention}",colour=0x42F56C)
 		embed.add_field(name="Expiration:", value=f"``Permantly``", inline=True)
@@ -244,7 +245,7 @@ async def banaccount(ctx,user,*,reason=None):
 @bot.command()
 @commands.has_permissions(administrator = True)
 async def unbanaccount(ctx,user):
-	req = requests.get(f"https://keyauth.win/api/seller/?sellerkey=REPLACEME&type=unbanuser&user={user}")
+	req = requests.get(f"https://keyauth.win/api/seller/?sellerkey={sellerkey}&type=unbanuser&user={user}")
 	if req.json()["success"] == True:	
 		embed=discord.Embed(title="**Moderation: User was unbanned**",description=f"{user}, Has been unbanned from Zempex Server.\nReason is `{reason}`. This Unban was requested from\n{ctx.author.mention}",colour=0x42F56C)
 		embed.add_field(name="UnBanned By:", value=f"``{ctx.author}``", inline=True)
@@ -254,7 +255,7 @@ async def unbanaccount(ctx,user):
 
 @bot.command()
 async def deletelicense(ctx,lic):
-	req = requests.get(f"https://keyauth.win/api/seller/?sellerkey=REPLACEME&type=del&key={lic}")
+	req = requests.get(f"https://keyauth.win/api/seller/?sellerkey={sellerkey}&type=del&key={lic}")
 	if req.json()["success"] == True:
 		await ctx.send(embed=discord.Embed(title="Licnese Deleted!",description='Succesfully Deleted License',colour=0x42F56C))
 	else:
@@ -263,7 +264,7 @@ async def deletelicense(ctx,lic):
 @bot.command()
 @commands.has_permissions(administrator = True)
 async def extend(ctx,user,sub,days):
-	req = requests.get(f"https://keyauth.win/api/seller/?sellerkey=REPLACEME&type=extend&user={user}&sub={sub}&expiry={days}")
+	req = requests.get(f"https://keyauth.win/api/seller/?sellerkey={sellerkey}&type=extend&user={user}&sub={sub}&expiry={days}")
 	print(req.text)
 	if req.json()["success"] == True:
 		await ctx.send(embed=discord.Embed(title="Extended!",description='Succesfully Extended User',colour=0x42F56C))
@@ -280,7 +281,7 @@ async def blacklist(ctx,inputofuser):
 		oii = f"hwid={inputofuser}"
 	else:
 		oii = f"ip={inputofuser}"
-	req = requests.get(f"https://keyauth.win/api/seller/?sellerkey=REPLACEME&type=black&{oii}")
+	req = requests.get(f"https://keyauth.win/api/seller/?sellerkey={sellerkey}&type=black&{oii}")
 	if req.json()["success"] == True:
 		await ctx.send(embed=discord.Embed(title="**Succesfully BlackListed!**",description=f"{ctx.author.mention}, Added {inputofuser} To Blacklist",colour=0x42F56C))
 	
@@ -299,7 +300,7 @@ async def unblacklist(ctx,inputofuser):
 		oii = f"hwid={inputofuser}"
 	else:
 		oii = f"ip={inputofuser}"
-	req = requests.get(f"https://keyauth.win/api/seller/?sellerkey=REPLACEME&type=delblack&{oii}")
+	req = requests.get(f"https://keyauth.win/api/seller/?sellerkey={sellerkey}&type=delblack&{oii}")
 	if req.json()["success"] == True:
 		await ctx.send(embed=discord.Embed(title="**Succesfully UnBlackListed!**",description=f"{ctx.author.mention}, Unblacklisted {inputofuser}",colour=0x42F56C))
 		logs_channel = bot.get_channel(int(logschannid))
@@ -316,7 +317,7 @@ async def gen(ctx,day:int):
 	role = discord.utils.get(ctx.guild.roles, name="[Perms] Generator") 
 	if role not in ctx.author.roles:
 		return
-	req = requests.get(f"https://keyauth.win/api/seller/?sellerkey=REPLACEME&type=add&expiry={day}&mask=XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX&level=1&amount=1&format=json")
+	req = requests.get(f"https://keyauth.win/api/seller/?sellerkey={sellerkey}&type=add&expiry={day}&mask=XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX&level=1&amount=1&format=json")
 	if req.json()["success"] == True:
 		if day == 1:
 			sub = "daily"
@@ -340,7 +341,7 @@ async def gen(ctx,day:int):
 @bot.command()
 @commands.has_permissions(administrator = True)
 async def accountinfo(ctx,user):
-	req = requests.get(f"https://keyauth.win/api/seller/?sellerkey=REPLACEME&type=userdata&user={user}")
+	req = requests.get(f"https://keyauth.win/api/seller/?sellerkey={sellerkey}&type=userdata&user={user}")
 	if req.json()["success"] == True:
 		ip = req.text.split('ip":"')[1].split('"')[0]
 		hwid = req.text.split('hwid":"')[1].split('"')[0]
