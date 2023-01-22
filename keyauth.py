@@ -156,6 +156,28 @@ async def botinfo(ctx):
 	embed.add_field(name="Bot Status:", value=f"``🟢 Online | 💙 Version: {version}``", inline=True)
 	embed.add_field(name="Developer", value=f"``Zempex#9492``", inline=True)
 	await ctx.send(embed=embed)
+	
+@bot.command()
+async def check_auth(ctx):
+    try:
+        response = requests.get('https://keyauth.win/')
+        response_time = response.elapsed.total_seconds()
+        if response.status_code == 200:
+            website_status = "Website is working"
+        else:
+            website_status = f"Website is not working, status code: {response.status_code}"
+
+        url2 = f"https://keyauth.win/api/seller/?sellerkey={sellerkey}&type=getsettings&format=json"
+        response2 = requests.get(url2)
+        rq = response2.json()
+
+        embed = discord.Embed(title="Keyauth Auth Status", color=0x42F56C)
+        embed.add_field(name="Website", value=website_status)
+        embed.add_field(name="Response Time", value=response_time)
+        embed.set_thumbnail(url="https://avatars.githubusercontent.com/u/111366720?s=200&v=4")
+        await ctx.send(embed=embed)
+    except:
+        await ctx.send("An error occurred.")
 
 
 @bot.command()
