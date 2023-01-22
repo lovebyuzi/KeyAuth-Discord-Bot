@@ -220,6 +220,10 @@ async def claim(ctx,lic):
 			embed.add_field(name="Claimed ID:", value=f"``{ctx.author} : {ctx.author.id}``", inline=True)
 			embed.add_field(name="Expire:", value=f"``{expire}``", inline=True)
 			await ctx.author.send(embed=embed)
+			logs_channel = bot.get_channel(int(logschannid))
+			await logs_channel.send(embed=discord.Embed(title="Key Redeemed", description=f"Redeemed by: {ctx.author}\nDate: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\nLicense Key: {lic}\nUsername: {username}", color=0x42F56C))
+			
+            
 		else:
 			await ctx.send(embed=discord.Embed(title="**Account creation failure!**",description=f"License is invalid, sent information to (DM)[{ctx.author.mention}]",colour=0xE74C3C))
 			await ctx.author.send(req.json()["message"])
