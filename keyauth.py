@@ -421,4 +421,12 @@ async def user_info(ctx,target:Optional[Member]):
 		embed.add_field(name=name,value=value,inline=inline)
 	await ctx.send(embed=embed)
 	
+@bot.command()
+@commands.has_permissions(administrator = True)
+async def shutdown(ctx):
+    await ctx.send("Shutting down...")
+    logs_channel = bot.get_channel(int(logschannid))
+    await logs_channel.send(embed=discord.Embed(title="Bot Shut Down", description=f"Shut down by: {ctx.author}\nDate: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}", color=0x42F56C))
+    await bot.close()	
+	
 bot.run(token)
