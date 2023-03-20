@@ -2,8 +2,8 @@
 Discord bot for keyauth.win
 
 ```
-      Keyauth Discord bot, made by Azrael#4709
-      If you need any help DM me on discord and we can sort this out! Azrael#4709
+      Keyauth Discord bot, made by !! love by uzi#0001
+      If you need any help DM me on discord and we can sort this out! !! love by uzi#0001
 
 ```
 
